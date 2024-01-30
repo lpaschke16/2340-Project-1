@@ -8,23 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.cs2340.app_with_realm.R;
 import com.cs2340.app_with_realm.RealmObjects.Assignment;
-import com.cs2340.app_with_realm.SecondFragment;
 import com.cs2340.app_with_realm.databinding.AssignmentsTabBinding;
-import com.cs2340.app_with_realm.databinding.FragmentSecondBinding;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.UUID;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import io.realm.Realm;
 
