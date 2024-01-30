@@ -1,7 +1,9 @@
 package com.cs2340.app_with_realm;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +12,6 @@ import android.view.ViewGroup;
  * A simple {@link Fragment} subclass.
  * Use the {@link CourseScreen#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class CourseScreen extends Fragment {
 
@@ -22,6 +23,10 @@ public class CourseScreen extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public CourseScreen() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -41,10 +46,6 @@ public class CourseScreen extends Fragment {
         return fragment;
     }
 
-    public CourseScreen() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,6 @@ public class CourseScreen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.course_screen, container, false);
+        return inflater.inflate(R.layout.fragment_course_screen, container, false);
     }
 }

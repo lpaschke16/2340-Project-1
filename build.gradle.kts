@@ -15,5 +15,6 @@ buildscript {
         classpath("io.realm:realm-gradle-plugin:10.15.1")
         classpath("com.android.tools.build:gradle:8.1.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.6")
     }
 }

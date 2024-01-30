@@ -31,6 +31,7 @@ public class FirstFragment extends Fragment {
     private ArrayList<String> lngList;
     private ListView lv;
     private Realm realm;
+    private EditText et;
     String tutorials[]
             = { "Algorithms", "Data Structures",
             "Languages", "Interview Corner",
@@ -54,7 +55,7 @@ public class FirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         RealmResults<Course> Courses = realm.where(Course.class).findAll();
-
+        et = view.findViewById(R.id.idEdtItemName);
         lv = view.findViewById(R.id.list);
         lv.setAdapter(new CourseContainer(Courses, getContext()));
 
@@ -68,11 +69,16 @@ public class FirstFragment extends Fragment {
         binding.AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Course course = new Course("CS2110", "wed", "dr.", "howey");
+                String newCourseName = et.getText().toString();
+                Course course = new Course(newCourseName, "", "", "");
+                et.setText("");
                 realm.executeTransaction (transactionRealm -> {
                     transactionRealm.insert(course);
                 });
+//                Bundle bundle = new Bundle();
+//                bundle.putString("CourseName", newCourseName);
                 Navigation.findNavController(view).navigate(R.id.action_FirstFragment_to_courseScreen);
+
             }
         });
     }
