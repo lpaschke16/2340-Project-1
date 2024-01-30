@@ -26,7 +26,7 @@
             android:id="@+id/editTextAssignmentDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Assignment Description (Optional)"
+            android:hint="Assignment Description (optional)"
             android:inputType="textMultiLine"/>
         <!--Due Date-->`
         <EditText

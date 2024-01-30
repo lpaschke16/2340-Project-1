@@ -29,7 +29,6 @@ public class AssignmentsTab extends Fragment {
     private EditText editTextDescription;
     private EditText editTextDueDate;
     private EditText editTextClass;
-    private Button saveButton;
 
     @Override
     public View onCreateView(
@@ -41,7 +40,7 @@ public class AssignmentsTab extends Fragment {
         editTextDescription = view.findViewById(R.id.editTextAssignmentDescription);
         editTextDueDate = view.findViewById(R.id.editTextDueDate);
         editTextClass = view.findViewById(R.id.editTextClass);
-        saveButton = view.findViewById(R.id.buttonSaveAssignment);
+        Button saveButton = view.findViewById(R.id.buttonSaveAssignment);
 
         // Come back to - don't use lambda expressions
         editTextDueDate.setOnClickListener(v -> showDate());
