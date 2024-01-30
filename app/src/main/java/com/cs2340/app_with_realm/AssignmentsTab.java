@@ -89,7 +89,6 @@ public class AssignmentsTab extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // initializing the Realm for data storage
 
     }
 

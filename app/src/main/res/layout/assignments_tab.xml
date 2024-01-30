@@ -16,7 +16,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
-        <!-- Assignment Title-->
         <EditText
             android:id="@+id/editTextAssignmentTitle"
             android:layout_width="match_parent"
