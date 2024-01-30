@@ -16,21 +16,21 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
-
+        <!-- Assignment Title-->
         <EditText
             android:id="@+id/editTextAssignmentTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Assignment Title"
             android:inputType="text"/>
-
+        <!--Assignment Description-->
         <EditText
             android:id="@+id/editTextAssignmentDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Assignment Description (Optional)"
             android:inputType="textMultiLine"/>
-
+        <!--Due Date-->
         <EditText
             android:id="@+id/editTextDueDate"
             android:layout_width="match_parent"

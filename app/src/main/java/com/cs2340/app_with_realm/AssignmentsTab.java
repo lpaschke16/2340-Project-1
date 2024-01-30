@@ -55,8 +55,6 @@ public class AssignmentsTab extends Fragment {
         return view;
     }
 
-    // Methods to create save the due date and assignment
-
     public void showDate() {
         Calendar cal = Calendar.getInstance();
         DatePickerDialog dialog = new DatePickerDialog(
