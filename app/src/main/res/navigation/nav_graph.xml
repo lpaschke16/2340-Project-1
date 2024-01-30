@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_courseScreen"
+            app:destination="@id/courseScreen" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -23,6 +26,15 @@
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseScreen"
+        android:name="com.cs2340.app_with_realm.CourseScreen"
+        android:label="course_screen"
+        tools:layout="@layout/course_screen" >
+        <action
+            android:id="@+id/action_courseScreen_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

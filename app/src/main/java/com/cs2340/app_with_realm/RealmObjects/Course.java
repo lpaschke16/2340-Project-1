@@ -5,13 +5,20 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Cource extends RealmObject {
+public class Course extends RealmObject {
     @PrimaryKey String id = UUID.randomUUID().toString();
-    String name;
+    public String name;
     String time;
     String instructor;
     String location;
     RealmList<Exam> exams;
     RealmList<Assignment> assignments;
     RealmList<Task> tasks;
+    public Course() {}
+    public Course(String name, String time, String instructor, String location) {
+        this.name = name;
+        this.time = time;
+        this.instructor = instructor;
+        this.location = location;
+    }
 }
