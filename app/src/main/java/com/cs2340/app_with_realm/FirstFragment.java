@@ -15,6 +15,7 @@ import android.widget.PopupWindow;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -29,7 +30,7 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class FirstFragment extends Fragment {
-
+    private static FirstFragment instance;
     private FragmentFirstBinding binding;
     private ListView lv;
     private EditText et;
@@ -43,6 +44,7 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         super.onCreate(savedInstanceState);
+        instance = this;
         this.container = container;
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         realm = Realm.getDefaultInstance();
@@ -62,6 +64,17 @@ public class FirstFragment extends Fragment {
                 onButtonShowPopupWindowClick(view);
             }
         });
+    }
+
+    public static FirstFragment getInstance() {
+        return instance;
+    }
+    public void refreshPage() {
+        FragmentActivity activity = getActivity();
+        activity.recreate();
+    }
+    public static void ra() {
+        System.out.println("he");
     }
 
     public void navigateCourseScreen(Bundle bundle) {
