@@ -6,16 +6,17 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class Course extends RealmObject {
-    @PrimaryKey String id = UUID.randomUUID().toString();
+    @PrimaryKey String id;
     public String name;
-    String time;
-    String instructor;
-    String location;
-    RealmList<Exam> exams;
-    RealmList<Assignment> assignments;
-    RealmList<Task> tasks;
+    public String time;
+    public String instructor;
+    public String location;
+    public RealmList<Exam> exams;
+    public RealmList<Assignment> assignments;
+    public RealmList<Task> tasks;
     public Course() {}
     public Course(String name, String time, String instructor, String location) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.time = time;
         this.instructor = instructor;

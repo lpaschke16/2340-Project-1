@@ -2,7 +2,11 @@ package com.cs2340.app_with_realm;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +16,7 @@ import android.view.ViewGroup;
  * A simple {@link Fragment} subclass.
  * Use the {@link CourseScreen#newInstance} factory method to
  * create an instance of this fragment.
+ *
  */
 public class CourseScreen extends Fragment {
 
@@ -23,10 +28,6 @@ public class CourseScreen extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    public CourseScreen() {
-        // Required empty public constructor
-    }
 
     /**
      * Use this factory method to create a new instance of
@@ -46,19 +47,23 @@ public class CourseScreen extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public CourseScreen() {
+        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+//        System.out.println(getArguments().getString("CourseId"));
+        System.out.println(getArguments());
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_course_screen, container, false);
+//        getActivity().setContentView();
+
+        return inflater.inflate(R.layout.course_screen, container, false);
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
     }
 }

@@ -16,16 +16,11 @@
             app:destination="@id/SecondFragment" />
         <action
             android:id="@+id/action_FirstFragment_to_courseScreen"
-            app:destination="@id/courseScreen">
-<!--            <argument-->
-<!--                android:name="CourseName"-->
-<!--                app:argType="String"-->
-<!--                android:defaultValue="" />-->
-        </action>
-        <action
-            android:id="@+id/action_FirstFragment_to_courseScreen2"
-            app:destination="@id/courseScreen2" />
-
+            app:destination="@id/courseScreen" />
+        <argument
+            android:name="courseName"
+            android:defaultValue="none"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -36,15 +31,15 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
-    </fragment>
 
+    </fragment>
     <fragment
-        android:id="@+id/courseScreen2"
+        android:id="@+id/courseScreen"
         android:name="com.cs2340.app_with_realm.CourseScreen"
-        android:label="fragment_course_screen"
-        tools:layout="@layout/fragment_course_screen" >
-        <argument
-            android:name="CourseName"
-            app:argType="string" />
+        android:label="@string/course_screen_title"
+        tools:layout="@layout/course_screen" >
+        <action
+            android:id="@+id/action_courseScreen_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

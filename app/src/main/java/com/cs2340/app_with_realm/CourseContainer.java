@@ -1,6 +1,7 @@
 package com.cs2340.app_with_realm;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.navigation.Navigation;
 
 import com.cs2340.app_with_realm.RealmObjects.Course;
 
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 public class CourseContainer extends BaseAdapter {
@@ -57,7 +59,13 @@ public class CourseContainer extends BaseAdapter {
         navigateBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_FirstFragment_to_courseScreen);
+                Course courseObjc = list.get(position);
+                Bundle bundle = new Bundle();
+                bundle.putString("courseName", courseObjc.name);
+                bundle.putString("instructor", courseObjc.instructor);
+                bundle.putString("time", courseObjc.time);
+                bundle.putString("location", courseObjc.location);
+                Navigation.findNavController(view).navigate(R.id.action_FirstFragment_to_courseScreen, bundle);
             }
         });
 
