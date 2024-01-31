@@ -1,5 +1,6 @@
 package com.cs2340.app_with_realm;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,7 +33,9 @@ public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
     private ListView lv;
     private EditText et;
+    public Button submitButton;
     private Realm realm;
+    private ViewGroup container;
 
     @Override
     public View onCreateView(
@@ -40,6 +43,7 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         super.onCreate(savedInstanceState);
+        this.container = container;
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         realm = Realm.getDefaultInstance();
         return binding.getRoot();
@@ -48,43 +52,27 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         RealmResults<Course> Courses = realm.where(Course.class).findAll();
-        et = view.findViewById(R.id.idEdtItemName);
         lv = view.findViewById(R.id.list);
         lv.setAdapter(new CourseContainer(Courses, getContext()));
 
-        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });
         binding.AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String newCourseName = et.getText().toString();
-//                Course course = new Course(newCourseName, "", "", "");
-//                et.setText("");
-//                realm.executeTransaction (transactionRealm -> {
-//                    transactionRealm.insert(course);
-//                });
-//
-//                Bundle bundle = new Bundle();
-//                bundle.putString("CourseId", "012");
-////
-//                Navigation.findNavController(view).navigate(R.id.action_FirstFragment_to_courseScreen, bundle);
                 onButtonShowPopupWindowClick(view);
             }
         });
     }
 
-    public void onButtonShowPopupWindowClick(View view) {
+    public void navigateCourseScreen(Bundle bundle) {
+        NavHostFragment.findNavController(FirstFragment.this)
+                .navigate(R.id.action_FirstFragment_to_courseScreen, bundle);
+    }
 
+
+    public void onButtonShowPopupWindowClick(View view) {
         // inflate the layout of the popup window
         LayoutInflater inflater = getLayoutInflater();
-//                getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_window, null);
 
         // create the popup window
@@ -94,8 +82,35 @@ public class FirstFragment extends Fragment {
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
         // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        EditText nameText = popupView.findViewById(R.id.nameText);
+        EditText instructorText = popupView.findViewById(R.id.instructorText);
+        EditText timeText = popupView.findViewById(R.id.timeText);
+        EditText locationText = popupView.findViewById(R.id.locationText);
+        Button submitButton = popupView.findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View innerView) {
+                String newName = nameText.getText().toString();
+                String newInstructor = instructorText.getText().toString();
+                String newTime = timeText.getText().toString();
+                String newLocation = locationText.getText().toString();
+                Course course = new Course(newName, newTime, newInstructor, newLocation);
+
+                realm.executeTransaction (transactionRealm -> {
+                    transactionRealm.insert(course);
+                });
+                Bundle bundle = new Bundle();
+                bundle.putString("courseName", newName);
+                bundle.putString("instructor", newInstructor);
+                bundle.putString("time", newTime);
+                bundle.putString("location", newLocation);
+
+                navigateCourseScreen(bundle);
+                popupWindow.dismiss();
+            }
+        });
 
         // dismiss the popup window when touched
         popupView.setOnTouchListener(new View.OnTouchListener() {
@@ -105,7 +120,6 @@ public class FirstFragment extends Fragment {
                 return true;
             }
         });}
-
 
     @Override
     public void onDestroyView() {

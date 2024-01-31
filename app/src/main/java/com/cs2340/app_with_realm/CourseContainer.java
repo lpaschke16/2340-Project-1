@@ -54,7 +54,10 @@ public class CourseContainer extends BaseAdapter {
         tvContact.setText(list.get(position).name);
 
         //Handle buttons and add onClickListeners
-        Button navigateBtn= (Button) view.findViewById(R.id.navigate);
+        Button navigateBtn = view.findViewById(R.id.navigate);
+        Button deleteBtn = view.findViewById(R.id.deleteButton);
+        Button editBtn = view.findViewById(R.id.editButton);
+
 
         navigateBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -68,6 +71,23 @@ public class CourseContainer extends BaseAdapter {
                 Navigation.findNavController(view).navigate(R.id.action_FirstFragment_to_courseScreen, bundle);
             }
         });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                System.out.println("delete");
+            }
+        });
+
+        editBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                System.out.println("delete");
+            }
+        });
+
+
+
 
         return view;
     }

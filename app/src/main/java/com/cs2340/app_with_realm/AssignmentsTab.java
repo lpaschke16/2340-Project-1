@@ -73,14 +73,14 @@ public class AssignmentsTab extends Fragment {
         }
 
         // Saving the assignment to the Realm
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransaction(realm1 -> {
-            Assignment assignment = realm1.createObject(Assignment.class, UUID.randomUUID().toString());
-            assignment.setTitle(assignmentTitle);
-            assignment.setClassName(className);
-            assignment.setDescription(assignmentDescription);
-            assignment.setDueDate(dueDate);
-        });
+//        Realm realm = Realm.getDefaultInstance();
+//        realm.executeTransaction(realm1 -> {
+//            Assignment assignment = realm1.createObject(Assignment.class, UUID.randomUUID().toString());
+//            assignment.setTitle(assignmentTitle);
+//            assignment.setClassName(className);
+//            assignment.setDescription(assignmentDescription);
+//            assignment.setDueDate(dueDate);
+//        });
 
         // A message indicating that the assignment has been added
         Toast.makeText(getContext(), "Assignment successfully added!", Toast.LENGTH_SHORT).show();

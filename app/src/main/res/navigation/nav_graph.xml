@@ -42,4 +42,10 @@
             android:id="@+id/action_courseScreen_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/courseContainer"
+        android:name="com.cs2340.app_with_realm.BlankFragment"
+        android:label="course_container"
+        tools:layout="@layout/fragment_blank" />
+
 </navigation>
