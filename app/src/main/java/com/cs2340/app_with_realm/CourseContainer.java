@@ -1,6 +1,7 @@
 package com.cs2340.app_with_realm;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,12 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 
 import com.cs2340.app_with_realm.RealmObjects.Course;
 
+import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 
@@ -38,7 +41,6 @@ public class CourseContainer extends BaseAdapter {
     @Override
     public long getItemId(int pos) {
         return 0;
-        //just return 0 if your list items do not have an Id variable.
     }
 
     @Override
@@ -49,12 +51,12 @@ public class CourseContainer extends BaseAdapter {
             view = inflater.inflate(R.layout.course_container, null);
         }
 
-        //Handle TextView and display string from your list
-        TextView tvContact= (TextView)view.findViewById(R.id.tvContact);
+        TextView tvContact= view.findViewById(R.id.tvContact);
         tvContact.setText(list.get(position).name);
 
-        //Handle buttons and add onClickListeners
-        Button navigateBtn= (Button) view.findViewById(R.id.navigate);
+        Button navigateBtn = view.findViewById(R.id.navigate);
+        Button deleteBtn = view.findViewById(R.id.deleteButton);
+        Button editBtn = view.findViewById(R.id.editButton);
 
         navigateBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -68,6 +70,28 @@ public class CourseContainer extends BaseAdapter {
                 Navigation.findNavController(view).navigate(R.id.action_FirstFragment_to_courseScreen, bundle);
             }
         });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Realm realm = Realm.getDefaultInstance();
+                realm.executeTransaction (transactionRealm -> {
+                    list.get(position).deleteFromRealm();
+                });
+                FirstFragment.getInstance().refreshPage();
+            }
+        });
+
+        editBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                FirstFragment.getInstance().onButtonShowPopupWindowClick(view, true, list.get(position));
+            }
+        });
+
+
+
 
         return view;
     }

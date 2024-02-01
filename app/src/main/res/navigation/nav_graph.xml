@@ -46,8 +46,16 @@
             app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
+<<<<<<< HEAD
         android:id="@+id/assignmentsTab"
         android:name="com.cs2340.app_with_realm.AssignmentsTab"
         android:label="assignments_tab"
         tools:layout="@layout/assignments_tab" />
+=======
+        android:id="@+id/courseContainer"
+        android:name="com.cs2340.app_with_realm.BlankFragment"
+        android:label="course_container"
+        tools:layout="@layout/fragment_blank" />
+
+>>>>>>> origin/master
 </navigation>
