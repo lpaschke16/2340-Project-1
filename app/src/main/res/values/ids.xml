@@ -5,4 +5,5 @@
     <item name="editTextDueDate" type="id"/>
     <item name="editTextClass" type="id"/>
     <item name="buttonSaveAssignment" type="id"/>
+    <item name="assignmentsRecyclerView" type="id" />
 </resources>

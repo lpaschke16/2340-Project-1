@@ -83,10 +83,14 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.assignments) {
+            // Nav Controller set up for navigation
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+            navController.navigate(R.id.action_FirstFragment_to_assignmentsTab2);
             return true;
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }

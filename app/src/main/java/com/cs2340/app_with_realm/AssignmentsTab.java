@@ -16,10 +16,14 @@ import com.cs2340.app_with_realm.R;
 import com.cs2340.app_with_realm.RealmObjects.Assignment;
 import com.cs2340.app_with_realm.databinding.AssignmentsTabBinding;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import io.realm.Realm;
 
@@ -29,6 +33,9 @@ public class AssignmentsTab extends Fragment {
     private EditText editTextDescription;
     private EditText editTextDueDate;
     private EditText editTextClass;
+    private RecyclerView assignmentsRecyclerView;
+    private AssignmentAdapter assignmentAdapter;
+    private List<Assignment> assignmentsList = new ArrayList<>();
 
     @Override
     public View onCreateView(
@@ -42,10 +49,13 @@ public class AssignmentsTab extends Fragment {
         editTextClass = view.findViewById(R.id.editTextClass);
         Button saveButton = view.findViewById(R.id.buttonSaveAssignment);
 
-        // Come back to - don't use lambda expressions
         editTextDueDate.setOnClickListener(v -> showDate());
         saveButton.setOnClickListener(v -> saveAssignment());
 
+        assignmentsRecyclerView = view.findViewById(R.id.assignmentsRecyclerView);
+        assignmentsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        assignmentAdapter = new AssignmentAdapter(assignmentsList);
+        assignmentsRecyclerView.setAdapter(assignmentAdapter);
         return view;
     }
 
@@ -80,10 +90,16 @@ public class AssignmentsTab extends Fragment {
             assignment.setClassName(className);
             assignment.setDescription(assignmentDescription);
             assignment.setDueDate(dueDate);
+            // Update the UI
+            assignmentsList.add(assignment);
+            assignmentAdapter.notifyItemInserted(assignmentsList.size() - 1);
         });
 
         // A message indicating that the assignment has been added
         Toast.makeText(getContext(), "Assignment successfully added!", Toast.LENGTH_SHORT).show();
+
+
+
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
