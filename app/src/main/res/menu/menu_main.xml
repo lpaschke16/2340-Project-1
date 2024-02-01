@@ -9,7 +9,9 @@
         app:showAsAction="never" />
     <item
         android:orderInCategory="1"
-        android:title="Assignments" />
+        android:title="Assignments"/>
+
+
     <item
         android:orderInCategory="2"
         android:title="Exams" />

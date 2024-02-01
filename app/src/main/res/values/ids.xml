@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <item name="editTextAssignmentTitle" type="id" tools:ignore="DuplicateDefinition" />
+    <item name="editTextAssignmentDescription" type="id" />
+    <item name="editTextDueDate" type="id"/>
+    <item name="editTextClass" type="id"/>
+    <item name="buttonSaveAssignment" type="id"/>
+</resources>

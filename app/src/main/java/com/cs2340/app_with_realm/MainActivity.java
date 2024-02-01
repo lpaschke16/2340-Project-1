@@ -20,6 +20,7 @@ import com.cs2340.app_with_realm.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import io.realm.Realm;

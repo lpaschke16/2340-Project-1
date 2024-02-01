@@ -63,7 +63,7 @@ public class AssignmentsTab extends Fragment {
 
     public void saveAssignment() {
         String assignmentTitle = editTextTitle.getText().toString().trim();
-            String assignmentDescription = editTextDescription.getText().toString().trim();
+        String assignmentDescription = editTextDescription.getText().toString().trim();
         String dueDate = editTextDueDate.getText().toString().trim();
         String className = editTextClass.getText().toString().trim();
 
