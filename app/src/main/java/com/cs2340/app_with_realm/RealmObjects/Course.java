@@ -22,4 +22,16 @@ public class Course extends RealmObject {
         this.instructor = instructor;
         this.location = location;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setInstructor(String instructor) {
+        this.instructor = instructor;
+    }
+    public void setTime(String time) {
+        this.time = time;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }

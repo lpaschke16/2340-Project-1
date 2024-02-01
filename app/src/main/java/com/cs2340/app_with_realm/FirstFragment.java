@@ -49,7 +49,6 @@ public class FirstFragment extends Fragment {
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         realm = Realm.getDefaultInstance();
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -61,7 +60,7 @@ public class FirstFragment extends Fragment {
         binding.AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onButtonShowPopupWindowClick(view);
+                onButtonShowPopupWindowClick(view, false, null);
             }
         });
     }
@@ -83,7 +82,7 @@ public class FirstFragment extends Fragment {
     }
 
 
-    public void onButtonShowPopupWindowClick(View view) {
+    public void onButtonShowPopupWindowClick(View view, boolean isEdit, Course course) {
         // inflate the layout of the popup window
         LayoutInflater inflater = getLayoutInflater();
         View popupView = inflater.inflate(R.layout.popup_window, null);
@@ -97,11 +96,18 @@ public class FirstFragment extends Fragment {
         // show the popup window
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-        EditText nameText = popupView.findViewById(R.id.nameText);
-        EditText instructorText = popupView.findViewById(R.id.instructorText);
-        EditText timeText = popupView.findViewById(R.id.timeText);
-        EditText locationText = popupView.findViewById(R.id.locationText);
+        EditText nameText = popupView.findViewById(R.id.nameInput);
+        EditText instructorText = popupView.findViewById(R.id.instructorInput);
+        EditText timeText = popupView.findViewById(R.id.timeInput);
+        EditText locationText = popupView.findViewById(R.id.locationInput);
         Button submitButton = popupView.findViewById(R.id.submitButton);
+
+        if (isEdit) {
+            nameText.setText(course.name);
+            instructorText.setText(course.instructor);
+            timeText.setText(course.time);
+            locationText.setText(course.location);
+        }
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View innerView) {
@@ -109,18 +115,28 @@ public class FirstFragment extends Fragment {
                 String newInstructor = instructorText.getText().toString();
                 String newTime = timeText.getText().toString();
                 String newLocation = locationText.getText().toString();
-                Course course = new Course(newName, newTime, newInstructor, newLocation);
 
-                realm.executeTransaction (transactionRealm -> {
-                    transactionRealm.insert(course);
-                });
-                Bundle bundle = new Bundle();
-                bundle.putString("courseName", newName);
-                bundle.putString("instructor", newInstructor);
-                bundle.putString("time", newTime);
-                bundle.putString("location", newLocation);
+                if (isEdit) {
+                    realm.executeTransaction (transactionRealm -> {
+                        course.setName(newName);
+                        course.setTime(newTime);
+                        course.setInstructor(newInstructor);
+                        course.setLocation(newLocation);
+                    });
+                    refreshPage();
+                } else {
 
-                navigateCourseScreen(bundle);
+                    Course newCourse = new Course(newName, newTime, newInstructor, newLocation);
+                    realm.executeTransaction(transactionRealm -> {
+                        transactionRealm.insert(newCourse);
+                    });
+                    Bundle bundle = new Bundle();
+                    bundle.putString("courseName", newName);
+                    bundle.putString("instructor", newInstructor);
+                    bundle.putString("time", newTime);
+                    bundle.putString("location", newLocation);
+                    navigateCourseScreen(bundle);
+                }
                 popupWindow.dismiss();
             }
         });

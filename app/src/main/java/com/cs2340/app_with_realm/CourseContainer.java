@@ -85,7 +85,8 @@ public class CourseContainer extends BaseAdapter {
         editBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                System.out.println("delete");
+
+                FirstFragment.getInstance().onButtonShowPopupWindowClick(view, true, list.get(position));
             }
         });
 
