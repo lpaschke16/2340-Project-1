@@ -2,39 +2,47 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:label="courseContainer"
+    android:backgroundTint="@color/secondary"
+    android:background="@drawable/rounded_container"
     tools:context="courseContainer">
-
-
 
     <TextView
         android:id="@+id/tvContact"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp"
+        android:textSize="24dp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/editButton"
-        android:layout_width="75dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:text="edit"
-        android:textSize="10sp" />
+        android:textSize="18sp"
+        android:padding="0dp"/>
 
     <Button
         android:id="@+id/deleteButton"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:text="delete"
-        android:textSize="8sp" />
+        android:padding="0dp"
+        android:textSize="18sp"
+        android:layout_marginHorizontal="5dp"/>
 
     <Button
         android:id="@+id/navigate"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:text="-->"
-        android:textSize="8sp" />
+        android:padding="0dp"
+        android:textSize="18sp"
+        />
+
 </LinearLayout>
