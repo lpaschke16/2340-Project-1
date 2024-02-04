@@ -82,11 +82,6 @@ public class AssignmentsTab extends Fragment {
         String dueDate = editTextDueDate.getText().toString().trim();
         String className = editTextClass.getText().toString().trim();
 
-        // error handling for when a field is not inputted
-        if (assignmentTitle.isEmpty() || dueDate.isEmpty() || className.isEmpty()) {
-            Toast.makeText(getContext(), "Please fill in all required fields!", Toast.LENGTH_SHORT).show();
-        }
-
         // Saving the assignment to the Realm
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(realm1 -> {
