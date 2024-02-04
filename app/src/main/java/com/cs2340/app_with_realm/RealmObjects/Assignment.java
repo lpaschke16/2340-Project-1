@@ -17,6 +17,7 @@ public class Assignment extends RealmObject {
     private String description;
 
     private String className;
+
     public String getTitle() {
         return title;
     }
@@ -27,6 +28,14 @@ public class Assignment extends RealmObject {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setDescription(String description) {
