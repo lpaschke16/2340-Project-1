@@ -16,15 +16,18 @@ import com.cs2340.app_with_realm.R;
 import com.cs2340.app_with_realm.RealmObjects.Assignment;
 import com.cs2340.app_with_realm.databinding.AssignmentsTabBinding;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import java.text.SimpleDateFormat;
 import io.realm.Realm;
 
 public class AssignmentsTab extends Fragment {
@@ -48,9 +51,11 @@ public class AssignmentsTab extends Fragment {
         editTextDueDate = view.findViewById(R.id.editTextDueDate);
         editTextClass = view.findViewById(R.id.editTextClass);
         Button saveButton = view.findViewById(R.id.buttonSaveAssignment);
+        Button sortButton = view.findViewById(R.id.buttonSortAssignments);
 
         editTextDueDate.setOnClickListener(v -> showDate());
         saveButton.setOnClickListener(v -> saveAssignment());
+        sortButton.setOnClickListener(v -> sortByDueDate());
 
         assignmentsRecyclerView = view.findViewById(R.id.assignmentsRecyclerView);
         assignmentsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -94,21 +99,23 @@ public class AssignmentsTab extends Fragment {
             assignmentsList.add(assignment);
             assignmentAdapter.notifyItemInserted(assignmentsList.size() - 1);
         });
-//        Realm realm = Realm.getDefaultInstance();
-//        realm.executeTransaction(realm1 -> {
-//            Assignment assignment = realm1.createObject(Assignment.class, UUID.randomUUID().toString());
-//            assignment.setTitle(assignmentTitle);
-//            assignment.setClassName(className);
-//            assignment.setDescription(assignmentDescription);
-//            assignment.setDueDate(dueDate);
-//        });
 
 
         // A message indicating that the assignment has been added
         Toast.makeText(getContext(), "Assignment successfully added!", Toast.LENGTH_SHORT).show();
+    }
 
-
-
+    public void sortByDueDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        Collections.sort(assignmentsList, (a1, a2) -> {
+            try {
+                return dateFormat.parse(a1.getDueDate()).compareTo(dateFormat.parse(a2.getDueDate()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return 0;
+            }
+        });
+        assignmentAdapter.notifyDataSetChanged();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
