@@ -72,9 +72,6 @@ public class FirstFragment extends Fragment {
         FragmentActivity activity = getActivity();
         activity.recreate();
     }
-    public static void ra() {
-        System.out.println("he");
-    }
 
     public void navigateCourseScreen(Bundle bundle) {
         NavHostFragment.findNavController(FirstFragment.this)

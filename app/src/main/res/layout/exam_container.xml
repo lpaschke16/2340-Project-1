@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:label="examContainer"
+    android:backgroundTint="@color/secondary"
+    android:background="@drawable/rounded_container"
+    tools:context="examContainer">
+
+    <TextView
+        android:id="@+id/tvExamContact"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/editExamButton"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="edit"
+        android:textSize="18sp"
+        android:padding="0dp"/>
+
+    <Button
+        android:id="@+id/deleteExamButton"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        android:padding="0dp"
+        android:textSize="18sp"
+        android:layout_marginHorizontal="5dp"/>
+
+
+</LinearLayout>
