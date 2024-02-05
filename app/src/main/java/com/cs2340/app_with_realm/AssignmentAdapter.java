@@ -42,17 +42,11 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.As
         holder.dueDate.setText(assignment.getDueDate());
 
         holder.deleteButton.setOnClickListener(v -> {
-            new AlertDialog.Builder(holder.itemView.getContext())
-                    .setTitle("Confirm Delete")
-                    .setMessage("Are you sure you want to delete?")
-                    .setPositiveButton(android.R.string.yes, (dialog, which) -> {
                         int pos = holder.getAdapterPosition();
                         String assignmentId = assignments.get(pos).getId();
                         deleteAssignment(assignmentId, pos);
-                    })
-                    .setNegativeButton(android.R.string.no, null)
-                    .show();
-        });
+                    });
+
 
         holder.editButton.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
@@ -114,7 +108,6 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.As
 
         // Save changes
         builder.setPositiveButton("Save", (dialog, which) -> {
-            // Extract text from EditText fields
             String newTitle = titleInput.getText().toString();
             String newDescription = descriptionInput.getText().toString();
             String newDueDate = dueDateInput.getText().toString();
@@ -140,10 +133,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.As
                 assignment.setDueDate(newDueDate);
                 assignment.setClassName(newClass);
             }
-        }, () -> {
-            notifyItemChanged(position);
         });
-        realm.close();
     }
 
 

@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_assignmentsTab2"
             app:destination="@id/assignmentsTab" />
+        <action
+            android:id="@+id/action_FirstFragment_to_ToDoList"
+            app:destination="@id/ToDoList" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -45,10 +48,18 @@
             android:id="@+id/action_courseScreen_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+
     <fragment
 
         android:id="@+id/assignmentsTab"
         android:name="com.cs2340.app_with_realm.AssignmentsTab"
-        android:label="assignments_tab"
+        android:label="Assignments"
         tools:layout="@layout/assignments_tab" />
+
+    <fragment
+        android:id="@+id/ToDoList"
+        android:name="com.cs2340.app_with_realm.ToDo"
+        android:label="To Do"
+        tools:layout="@layout/to_do"/>
+
 </navigation>
