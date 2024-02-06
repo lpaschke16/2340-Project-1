@@ -6,4 +6,11 @@
     <item name="editTextClass" type="id"/>
     <item name="buttonSaveAssignment" type="id"/>
     <item name="assignmentsRecyclerView" type="id" />
+    <item name="taskCompletedCheckBox" type="id" />
+    <item name="taskName" type="id"/>
+    <item name="deleteTaskButton" type="id"/>
+    <item name="editTaskButton" type="id"/>
+    <item name="taskDescription" type="id" />
+    <item name="editTaskTitle" type="id"/>
+    <item name="editTaskDescription" type="id"/>
 </resources>
