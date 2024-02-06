@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_examsTab"
             app:destination="@id/examsTab" />
+        <action
+            android:id="@+id/action_FirstFragment_to_toDo2"
+            app:destination="@id/toDo" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -53,10 +56,22 @@
         android:id="@+id/assignmentsTab"
         android:name="com.cs2340.app_with_realm.AssignmentsTab"
         android:label="assignments_tab"
-        tools:layout="@layout/assignments_tab" />
+        tools:layout="@layout/assignments_tab" >
+        <action
+            android:id="@+id/action_assignmentsTab_to_examsTab"
+            app:destination="@id/examsTab" />
+    </fragment>
     <fragment
         android:id="@+id/examsTab"
         android:name="com.cs2340.app_with_realm.ExamsTab"
         android:label="exams_tab"
-        tools:layout="@layout/exams_tab" />
+        tools:layout="@layout/exams_tab" >
+        <action
+            android:id="@+id/action_examsTab_to_assignmentsTab"
+            app:destination="@id/assignmentsTab" />
+    </fragment>
+    <fragment
+        android:id="@+id/toDo"
+        android:name="com.cs2340.app_with_realm.ToDo"
+        android:label="ToDo" />
 </navigation>

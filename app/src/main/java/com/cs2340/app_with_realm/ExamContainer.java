@@ -53,7 +53,16 @@ public class ExamContainer extends BaseAdapter {
         }
 
         TextView tvContact = view.findViewById(R.id.tvExamContact);
-        tvContact.setText(list.get(position).name);
+        TextView tvDate = view.findViewById(R.id.tvExamDate);
+        TextView tvTime = view.findViewById(R.id.tvExamTime);
+        TextView tvLocation = view.findViewById(R.id.tvExamLocation);
+
+        Exam exam = list.get(position);
+
+        tvContact.setText("Class: " + exam.name);
+        tvDate.setText("Date: " + exam.date);
+        tvTime.setText("Time: " + exam.time);
+        tvLocation.setText("Location: " + exam.location);
 
         Button deleteBtn = view.findViewById(R.id.deleteExamButton);
         Button editBtn = view.findViewById(R.id.editExamButton);

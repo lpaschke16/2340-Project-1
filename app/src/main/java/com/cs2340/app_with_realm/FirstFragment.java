@@ -63,6 +63,7 @@ public class FirstFragment extends Fragment {
                 onButtonShowPopupWindowClick(view, false, null);
             }
         });
+//        MainActivity.setCurFragment("FirstFragment");
     }
 
     public static FirstFragment getInstance() {

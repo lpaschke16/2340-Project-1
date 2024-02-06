@@ -45,7 +45,7 @@ public class ExamsTab extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+//        MainActivity.setCurFragment("ExamsTab");
         RealmResults<Exam> Exams = realm.where(Exam.class).findAll();
         lv = view.findViewById(R.id.examList);
         lv.setAdapter(new ExamContainer(Exams, getContext()));
@@ -129,5 +129,6 @@ public class ExamsTab extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
     }
+
 
 }

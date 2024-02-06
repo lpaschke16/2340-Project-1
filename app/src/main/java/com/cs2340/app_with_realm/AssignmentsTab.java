@@ -45,6 +45,7 @@ public class AssignmentsTab extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+//        MainActivity.setCurFragment("AssignmentsTab");
         View view = inflater.inflate(R.layout.assignments_tab, container, false);
         editTextTitle = view.findViewById(R.id.editTextAssignmentTitle);
         editTextDescription = view.findViewById(R.id.editTextAssignmentDescription);
