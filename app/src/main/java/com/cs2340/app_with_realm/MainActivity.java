@@ -78,23 +78,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         if (id == R.id.assignments) {
-            // Nav Controller set up for navigation
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
             navController.navigate(R.id.action_FirstFragment_to_assignmentsTab2);
             return true;
         }
-        if (id == R.id.exams) {
+        if (id == R.id.ToDoList) {
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-            navController.navigate(R.id.action_FirstFragment_to_examsTab);
+            navController.navigate(R.id.action_FirstFragment_to_ToDoList);
             return true;
         }
-
 
 
         return super.onOptionsItemSelected(item);
